@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Backend API
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ODOO_URL=${ODOO_URL:-http://host.docker.internal:8069}
+      - ODOO_DB=${ODOO_DB:-quimibond}
+      - ODOO_USER=${ODOO_USER:-admin}
+      - ODOO_PASSWORD=${ODOO_PASSWORD:-admin}
+    volumes:
+      - ./backend:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # Redis para caché (opcional pero recomendado)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+
+# Nota: El frontend de Lovable se ejecuta por separado
+# Configurar CORS en el backend para permitir el dominio de Lovable

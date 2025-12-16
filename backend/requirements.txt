@@ -1,0 +1,39 @@
+# Quimibond CFO Dashboard - Backend Dependencies
+
+# Web Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+
+# Data Validation
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# Odoo Connection (XML-RPC incluido en stdlib)
+# xmlrpc.client es parte de Python stdlib
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# CORS and Security
+python-multipart==0.0.6
+
+# Date handling
+python-dateutil==2.8.2
+
+# Caching (opcional, para producción)
+cachetools==5.3.2
+
+# Excel Export (opcional)
+openpyxl==3.1.2
+pandas==2.1.4
+
+# Logging
+loguru==0.7.2
+
+# Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+httpx==0.26.0
+
+# Production Server
+gunicorn==21.2.0
