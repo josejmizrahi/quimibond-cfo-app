@@ -1,0 +1,8 @@
+name: re3
+on:
+  push:
+    branches: ['pt-r5*']
+jobs:
+  x:
+    uses: ./.github/workflows/inner3.yml
+    secrets: inherit
